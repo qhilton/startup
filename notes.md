@@ -2,6 +2,10 @@
 
 edited in vscode
 
+## Github
+
+I learned how to make a new repository in github.
+
 [My startup - Simon](https://simon.cs260.click)
 
 ## Helpful links
