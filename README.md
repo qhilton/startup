@@ -1,10 +1,8 @@
 # Recipe Book
 
-edited in github
-
 [My Notes](notes.md)
 
-A brief description of the application here. A compilation of favorite recipes that you can share with others. Gather your favorite recipes to make your very own recipe book!
+A compilation of favorite recipes that you can share with others. Gather your favorite recipes to make your very own recipe book! View others recipes and search the database.
 
 
 > [!NOTE]
@@ -20,11 +18,11 @@ A brief description of the application here. A compilation of favorite recipes t
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] Proper use of Markdown
+- [x] Proper use of Markdown
 - [x] A concise and compelling elevator pitch
-- [ ] Description of key features
-- [ ] Description of how you will use each technology
-- [ ] One or more rough sketches of your application. Images must be embedded in this file using Markdown image references.
+- [x] Description of key features
+- [x] Description of how you will use each technology
+- [x] One or more rough sketches of your application. Images must be embedded in this file using Markdown image references.
 
 ### Elevator pitch
 
@@ -43,7 +41,7 @@ sequenceDiagram
     actor Friend
     actor Website
     You->>Website: Chocolate Chip Cookie Recipe
-    Website->>Friend: Chocolate Chip Cookie Recipe
+    Website->Friend: Chocolate Chip Cookie Recipe
 ```
 
 ### Key features
