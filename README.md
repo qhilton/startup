@@ -32,7 +32,8 @@ Everybody eats, I don't know anybody that doesn't. And everybody knows that home
 
 ### Design
 
-![Design image](placeholder.png)
+![Recipe Book Design](https://github.com/user-attachments/assets/9c16378a-ee07-4ed4-b07e-687a22101cd5)
+
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
@@ -45,9 +46,10 @@ sequenceDiagram
 
 ### Key features
 
-- Describe your key feature
-- Describe your key feature
-- Describe your key feature
+- Secure login over HTTPS
+- Ability to create, edit, and delete recipe cards
+- Display of popular recipes
+- Ability to search uploaded recipe cards
 
 ### Technologies
 
