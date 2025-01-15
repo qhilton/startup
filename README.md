@@ -39,9 +39,8 @@ Here is a sequence diagram that shows how people would interact with the backend
 sequenceDiagram
     actor You
     actor Friend
-    actor Website
-    You->>Website: Chocolate Chip Cookie Recipe
-    Website->Friend: Chocolate Chip Cookie Recipe
+    You->>Server: Chocolate Chip Cookie Recipe
+    Server->>>Friend: Chocolate Chip Cookie Recipe
 ```
 
 ### Key features
