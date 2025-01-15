@@ -40,7 +40,7 @@ sequenceDiagram
     actor You
     actor Friend
     You->>Server: Chocolate Chip Cookie Recipe
-    Server -.->Friend: Chocolate Chip Cookie Recipe
+    Server->>Friend: Chocolate Chip Cookie Recipe
 ```
 
 ### Key features
