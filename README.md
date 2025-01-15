@@ -35,13 +35,15 @@ Everybody eats, I don't know anybody that doesn't. And everybody knows that home
 ![Recipe Book Design](https://github.com/user-attachments/assets/9c16378a-ee07-4ed4-b07e-687a22101cd5)
 
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Here is a sequence diagram that shows how people would interact with the backend to upload recipes.
 
 ```mermaid
 sequenceDiagram
     actor You
+    actor Friend
     actor Website
-    You->>Website: Replace this with your design
+    You->>Website: Chocolate Chip Cookie Recipe
+    Website->>Friend: Chocolate Chip Cookie Recipe
 ```
 
 ### Key features
@@ -55,12 +57,15 @@ sequenceDiagram
 
 I am going to use the required technologies in the following ways.
 
-- **HTML** - Description here
-- **CSS** - Description here
-- **React** - Description here
-- **Service** - Description here
-- **DB/Login** - Description here
-- **WebSocket** - Description here
+- **HTML** - Uses correct HTML structure for application. Four HTML pages. The login page, home page, create recipe page, and the view recipe page. 
+- **CSS** - Application styling that looks good on different screen sizes, uses good whitespace, color choice and contrast.
+- **React** - Provides login, recipe display, display other users recipes, searching recipes, and use of React for routing and components.
+- **Service** - Backend service with endpoints for:
+    - login
+    - retrieving recipes
+    - submitting recipes
+- **DB/Login** - Store users, and recipes in database. Register and login users. Credentials securely stored in database. Can't create unless authenticated.
+- **WebSocket** - As each user creates a new recipe, it is broadcasted to all other users.
 
 ## 🚀 AWS deliverable
 
