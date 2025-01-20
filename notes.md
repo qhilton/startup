@@ -16,12 +16,12 @@ I learned how to make a new repository in github.
 ## AWS
 
 My IP address is: 54.156.25.111
-Command to ssh: ssh -i [key pair file] ubuntu@[ip address]
+Command to ssh: ssh -i /Downloads/kirgan11.pem ubuntu@recipebook260.click
 Check my DNS: AWS - Route 53 - Hosted Zones
 
 ## Caddy
 
-No problems worked just like it said in the [instruction](https://github.com/webprogramming260/.github/blob/main/profile/webServers/https/https.md).
+If it says insert, press escape. Use :wq to exit
 
 ## HTML
 
