@@ -5,7 +5,7 @@
 
 I learned how to make a new repository in github.
 
-[My startup - Simon](https://simon.cs260.click)
+[My startup](https://startup.recipebook260.click)
 
 ## Helpful links
 
@@ -22,6 +22,7 @@ Check my DNS: AWS - Route 53 - Hosted Zones
 ## Caddy
 
 If it says insert, press escape. Use :wq to exit
+
 
 ## HTML
 
