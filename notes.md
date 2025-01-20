@@ -1,6 +1,5 @@
 # CS 260 Notes
 
-edited in vscode
 
 ## Github
 
@@ -16,8 +15,9 @@ I learned how to make a new repository in github.
 
 ## AWS
 
-My IP address is: 54.81.96.130
-Launching my AMI I initially put it on a private subnet. Even though it had a public IP address and the security group was right, I wasn't able to connect to it.
+My IP address is: 54.156.25.111
+Command to ssh: ssh -i [key pair file] ubuntu@[ip address]
+Check my DNS: AWS - Route 53 - Hosted Zones
 
 ## Caddy
 
