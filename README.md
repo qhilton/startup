@@ -68,21 +68,21 @@ I am going to use the required technologies in the following ways.
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Server deployed and accessible with custom domain name** - [My server link](https://yourdomainnamehere.click).
+- [x] **Server deployed and accessible with custom domain name** - [Recipe Book](https://recipebook260.click).
 
 ## 🚀 HTML deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **HTML pages** - I did not complete this part of the deliverable.
-- [ ] **Proper HTML element usage** - I did not complete this part of the deliverable.
-- [ ] **Links** - I did not complete this part of the deliverable.
-- [ ] **Text** - I did not complete this part of the deliverable.
-- [ ] **3rd party API placeholder** - I did not complete this part of the deliverable.
-- [ ] **Images** - I did not complete this part of the deliverable.
-- [ ] **Login placeholder** - I did not complete this part of the deliverable.
-- [ ] **DB data placeholder** - I did not complete this part of the deliverable.
-- [ ] **WebSocket placeholder** - I did not complete this part of the deliverable.
+- [x] **HTML pages** - I add 4 pages. index.html, home.html, createRecipe.html, and viewRecipe.html.
+- [x] **Proper HTML element usage** - I correctly use a nav, header, main, and footer per page.
+- [x] **Links** - I have links that go between all the pages.
+- [x] **Text** - I added text for headers and placeholders.
+- [x] **3rd party API placeholder** - I added a placeholder for it on the home.html page, id="nutrition".
+- [x] **Images** - I added an image on the index.html. Everypage also has a recipe icon in the browser.
+- [x] **Login placeholder** - the index.html page has a placeholder login that takes you to the home.html page.
+- [x] **DB data placeholder** - The createRecipe.html page will store its information into the database and be accessed by the viewRecipe.html page. Currently they have placeholders.
+- [x] **WebSocket placeholder** - The home.html page has a placeholder, Popular Recipes, to display other user's recipes.
 
 ## 🚀 CSS deliverable
 
