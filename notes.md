@@ -30,6 +30,9 @@ This was not as difficult as I expected. I used the html elements correctly, but
 
 ## CSS
 
+./deployFiles.sh -k C:/users/Quintin/Downloads/kirgan11.pem -h recipebook260.click -s simon
+
+
 This took a couple hours to get it how I wanted. It was important to make it responsive and Bootstrap helped with that. It looks great on all kinds of screen sizes.
 
 Bootstrap seems a bit like magic. It styles things nicely, but is very opinionated. You either do, or you do not. There doesn't seem to be much in between.
