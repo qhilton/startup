@@ -4,21 +4,21 @@ body {
     min-width: 375px;
   }
   
-  header {
+header {
     flex: 0 80px;
-  }
-  
-  main {
+}
+
+main {
     flex: 1 calc(100vh - 110px);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-  }
-  
-  footer {
+}
+
+footer {
     flex: 0 30px;
-  }
+}
   
 menu {
     flex: 1;
@@ -26,14 +26,18 @@ menu {
     /*  overwrite Bootstrap so the menu does not wrap */
     flex-direction: row !important;
     list-style: none;
+    align-items: center;
   }
 
-  .navbar-brand {
-    padding-left: 0.3em;
+nav {
     border-bottom: solid rgb(0, 0, 0) thin;
+}
+
+.navbar-brand {
+    padding-left: 0.3em;
   }
   
-  menu .nav-item {
+menu .nav-item {
     padding: 0 0.3em;
   }
 

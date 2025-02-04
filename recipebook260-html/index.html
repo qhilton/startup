@@ -17,7 +17,7 @@
       crossorigin="anonymous"
     />
   </head>
-  <body class="">
+  <body style="background-color: lightblue;">
     <!-- Use header, main, and footer elements to give semantic structure -->
     <!-- <div class="flex flex-row"> -->
       <header class="container-fluid">
@@ -30,9 +30,9 @@
             <!-- Menu is a semantic alternative to <ul> that represents an interaction -->
             <menu class="navbar-nav">
               <li class="nav-item"><a class="nav-link active" href="index.html">Login</a></li>
-              <li class="nav-item"><a class="nav-link active" href="home.html">Home</a></li>
-              <li class="nav-item"><a class="nav-link active" href="viewRecipe.html">View Recipe</a></li>
-              <li class="nav-item"><a class="nav-link active" href="createRecipe.html">Create Recipe</a></li>
+              <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+              <li class="nav-item"><a class="nav-link" href="viewRecipe.html">View Recipe</a></li>
+              <li class="nav-item"><a class="nav-link" href="createRecipe.html">Create Recipe</a></li>
             </menu>
           </nav>
         
@@ -41,7 +41,14 @@
       </header>
     <!-- </div> -->
 
-    <main>
+    <main style=
+      "background-color: white;
+      background-image: url('newrecipebook.jpg');
+      background-size: cover;
+      background-position: center; 
+      background-repeat: no-repeat; 
+      height: auto;"
+    >
       <h1>Welcome to Recipe Book</h1>
       <form method="get" action="home.html">
         <div>
@@ -53,7 +60,7 @@
         <button type="submit">Login</button>
         <button type="submit">Create</button>
       </form>
-      <div id="picture" class="picture-box"><img width="w-full" src="blankrecipebook.jpg" alt="random" /></div>
+      <!-- <div id="picture" class="picture-box"><img width="w-full" src="blankrecipebook.jpg" alt="random" /></div> -->
     </main>
 
     <footer>
