@@ -5,7 +5,10 @@ body {
   }
   
 header {
+    display: flex;
     flex: 0 70px;
+    align-items: center;
+
 }
 
 main {
@@ -32,15 +35,21 @@ menu {
   }
 
 /* nav {
-    border-bottom: solid rgb(0, 0, 0) thin;
+    //border-bottom: solid rgb(0, 0, 0) thin;
 } */
+
+nav {
+    display: flex;
+}
 
 .navbar-brand {
     padding-left: 0.3em;
   }
   
 menu .nav-item {
+    display: flex;
     padding: 0 0.3em;
+    align-items: center;
   }
 
   footer a {
