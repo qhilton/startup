@@ -1,0 +1,84 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-width: 375px;
+    min-height: 100vh;
+  }
+  
+header {
+    display: flex;
+    flex: 0 70px;
+    align-items: center;
+
+}
+
+main {
+    flex: 1 calc(100vh - 110px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: left;
+}
+
+footer {
+    flex: 0 30px;
+    margin-top: 5px;
+    align-items: center;
+}
+  
+menu {
+    flex: 1;
+    display: flex;
+    /*  overwrite Bootstrap so the menu does not wrap */
+    flex-direction: row !important;
+    list-style: none;
+    align-items: center;
+  }
+
+/* nav {
+    //border-bottom: solid rgb(0, 0, 0) thin;
+} */
+
+nav {
+    display: flex;
+    align-items: center;
+    /* border-bottom: solid rgb(0, 0, 0) thin; */
+}
+
+.navbar-brand {
+    padding-left: 0.3em;
+}
+  
+menu .nav-item {
+    display: flex;
+    padding: 0 0.3em;
+    align-items: center;
+}
+
+footer a {
+    float: right;
+    /* border-top: solid rgb(0, 0, 0) thin; */
+}
+
+.my-footer {
+    /* border-top: solid rgb(0, 0, 0) thin; */
+    display: flex;
+}
+}
+
+.left-item {
+    margin-right: 20px;
+}
+  
+  @media (max-height: 600px) {
+    header {
+      display: none;
+    }
+    footer {
+      display: none;
+    }
+    main {
+      flex: 1 100vh;
+    }
+  }
+  
