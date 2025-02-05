@@ -2,14 +2,11 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <!-- Tell browsers not to scale the viewport automatically -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Create</title>
     <link rel="icon" href="recipebooklogo.png" />
     
     <link rel="stylesheet" href="createRecipe.css" />
-
-    <!-- Include bootstrap CSS framework -->
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
         rel="stylesheet"
@@ -17,44 +14,53 @@
         crossorigin="anonymous"
         />
   </head>
-  <body>
-    <header>
-        <h1>Recipe Book</h1>
-  
-        <!-- Navigation elements -->
-        <nav>
-          <!-- Menu is a semantic alternative to <ul> that represents an interaction -->
-          <menu>
-            <li><a href="index.html">Login</a></li>
-            <li><a href="home.html">Home</a></li>
-            <li><a href="viewRecipe.html">View Recipe</a></li>
-            <li><a href="createRecipe.html">Create Recipe</a></li>
+  <body style="background-color: rgb(242,242,240);">
+    <header class="container-fluid">
+      <nav class="navbar fixed-top">
+          <a class="navbar-brand" href="#">Recipe Book</a>
+          <menu class="navbar-nav">
+              <li class="nav-item">
+                  <a class="nav-link" href="index.html">Login</a>
+                </li>
+                <span>|</span>
+                <li class="nav-item">
+                  <a class="nav-link" href="home.html">Home</a>
+                </li>
+                <span>|</span>
+                <li class="nav-item">
+                  <a class="nav-link" href="viewRecipe.html">View Recipe</a>
+                </li>
+                <span>|</span>
+                <li class="nav-item">
+                  <a class="nav-link active" href="createRecipe.html">Create Recipe</a>
+                </li>
           </menu>
         </nav>
-  
-        <!-- Since we don't have the ability to style we use old style HTML to give some visual formatting -->
-        <hr />
-    </header>
+  </header>
 
     <main>
         <h1>
             Create Recipe
         </h1>
-        <div>
-            <input type="text" placeholder="name"/>
-            <!-- <textarea type="text" placeholder="list your ingredients">
-            <textarea type="text" placeholder="write the instructions"> -->
-            <form>
-                <label for="ingredients">Ingredients:</label><br>
-                <textarea id="ingredients" name="ingredients" rows="4" cols="50"></textarea>
-            </form>
-            <form>
-                <label for="instructions">Instructions:</label><br>
-                <textarea id="instructions" name="instructions" rows="4" cols="50"></textarea>
-            </form>
+        <div class="flex flex-col">
+            <div class="flex">
+              <input type="text" placeholder="name"/>
+              <!-- <textarea type="text" placeholder="list your ingredients">
+              <textarea type="text" placeholder="write the instructions"> -->
+              <form>
+                  <label for="ingredients">Ingredients:</label><br>
+                  <textarea id="ingredients" name="ingredients" rows="4" cols="50"></textarea>
+              </form>
+            </div>
+            <div class="flex">
+              <form>
+                  <label for="instructions">Instructions:</label><br>
+                  <textarea id="instructions" name="instructions" rows="4" cols="50"></textarea>
+              </form>
+            </div>
         </div>
         <form method="get" action="viewRecipe.html">
-            <button type="submit">Save</button>
+            <button type="submit" class="btn btn-primary">Save</button>
         </form>
     </main>
 
