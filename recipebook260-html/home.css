@@ -2,6 +2,7 @@ body {
     display: flex;
     flex-direction: column;
     min-width: 375px;
+    min-height: 100vh;
   }
   
 header {
@@ -61,6 +62,10 @@ footer a {
 
 .my-footer {
     border-top: solid rgb(0, 0, 0) thin;
+}
+
+.left-item {
+    margin-right: 20px;
 }
   
   @media (max-height: 600px) {
