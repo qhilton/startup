@@ -39,17 +39,23 @@ menu {
 } */
 
 nav {
+    /* align-items: center; */
     display: flex;
 }
 
 .navbar-brand {
-    padding-left: 0.3em;
+    padding-left: 0.5em;
   }
+
+menu .nav-link {
+    padding-left: 0.5em;
+    display: flex;
+}
   
 menu .nav-item {
     display: flex;
     padding: 0 0.3em;
-    align-items: center;
+    /* align-items: center; */
   }
 
   footer a {
