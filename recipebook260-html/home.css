@@ -40,6 +40,8 @@ menu {
 
 nav {
     display: flex;
+    align-items: center;
+    border-bottom: solid rgb(0, 0, 0) thin;
 }
 
 .navbar-brand {
