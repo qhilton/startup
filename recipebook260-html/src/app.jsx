@@ -10,29 +10,28 @@ import { CreateRecipe } from './createRecipe/createRecipe';
 export default function App() {
   return (
     <BrowserRouter>
-        <div>
-            <header className="container-fluid">
-                <nav className="navbar fixed-top">
-                    <div className="" href="#">Recipe Book</div>
-                    <menu className="navbar-nav">
-                        <li className="nav-item">
-                            <NavLink className='nav-link' to=''>Login</NavLink>
-                        </li>
-                        <span>|</span>
-                        <li className="nav-item">
-                            <NavLink className='nav-link' to='home'>Home</NavLink>
-                        </li>
-                        <span>|</span>
-                        <li className="nav-item">
-                            <NavLink className='nav-link' to='viewRecipe'>View Recipe</NavLink>
-                        </li>
-                        <span>|</span>
-                        <li className="nav-item">
-                            <NavLink className='nav-link' to='createRecipe'>Create Recipe</NavLink>
-                        </li>
-                    </menu>
-                </nav>
-            </header>
+        <header className="flex">
+            <nav className="navbar">
+                <div className="" href="#">Recipe Book</div>
+                <menu className="navbar-nav">
+                    <li className="nav-item">
+                        <NavLink className='nav-link' to=''>Login</NavLink>
+                    </li>
+                    <span>|</span>
+                    <li className="nav-item">
+                        <NavLink className='nav-link' to='home'>Home</NavLink>
+                    </li>
+                    <span>|</span>
+                    <li className="nav-item">
+                        <NavLink className='nav-link' to='viewRecipe'>View Recipe</NavLink>
+                    </li>
+                    <span>|</span>
+                    <li className="nav-item">
+                        <NavLink className='nav-link' to='createRecipe'>Create Recipe</NavLink>
+                    </li>
+                </menu>
+            </nav>
+        </header>
 
             <Routes>
                 <Route path='/' element={<Login />} exact />
@@ -42,13 +41,13 @@ export default function App() {
                 <Route path='*' element={<NotFound />} />
             </Routes>
 
-            <footer>
+            <footer className="flex">
                 <div className="container-fluid">
                     <span className="text-reset">Quintin Hilton</span>
                     <a className="text-reset" href="https://github.com/qhilton/startup">GitHub</a>
                 </div>
             </footer>
-        </div>
+        
     </BrowserRouter>
   );
 }

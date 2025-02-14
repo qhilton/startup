@@ -1,18 +1,18 @@
-body {
+.body {
     display: flex;
     flex-direction: column;
     min-width: 375px;
     min-height: 100vh;
   }
   
-header {
+.header {
     display: flex;
     flex: 0 70px;
     align-items: center;
 
 }
 
-main {
+.main {
     flex: 1 calc(100vh - 110px);
     display: flex;
     flex-direction: column;
@@ -20,13 +20,13 @@ main {
     justify-content: left;
 }
 
-footer {
+.footer {
     flex: 0 30px;
     margin-top: 5px;
     align-items: center;
 }
   
-menu {
+.menu {
     flex: 1;
     display: flex;
     /*  overwrite Bootstrap so the menu does not wrap */
@@ -39,7 +39,7 @@ menu {
     //border-bottom: solid rgb(0, 0, 0) thin;
 } */
 
-nav {
+.nav {
     display: flex;
     align-items: center;
     /* border-bottom: solid rgb(0, 0, 0) thin; */
@@ -55,7 +55,7 @@ menu .nav-item {
     align-items: center;
 }
 
-footer a {
+.footer a {
     float: right;
     /* border-top: solid rgb(0, 0, 0) thin; */
 }
