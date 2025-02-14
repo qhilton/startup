@@ -69,7 +69,7 @@ menu .nav-item {
     margin-right: 40px;
 }
   
-@media (max-height: 600px) {
+/* @media (max-height: 600px) {
   header {
     display: none;
   }
@@ -80,4 +80,4 @@ menu .nav-item {
     flex: 1 100vh;
   }
 }
-  
+   */
