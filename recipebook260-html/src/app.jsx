@@ -12,7 +12,7 @@ export default function App() {
     <BrowserRouter>
         <header className="flex">
             <nav className="navbar">
-                <div className="" href="#">Recipe Book</div>
+                <div className="ml-2" href="#">Recipe Book</div>
                 <menu className="navbar-nav">
                     <li className="nav-item">
                         <NavLink className='nav-link' to=''>Login</NavLink>
