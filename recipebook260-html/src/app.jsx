@@ -12,7 +12,6 @@ export default function App() {
     <BrowserRouter>
         <div>
             <header className="container-fluid">
-                
                 <nav className="navbar fixed-top">
                     <div className="" href="#">Recipe Book</div>
                     <menu className="navbar-nav">
