@@ -3,6 +3,12 @@ body {
     flex-direction: column;
     min-width: 375px;
   }
+
+.body {
+  display: flex;
+  flex-direction: column;
+  min-width: 375px;
+}
   
 header {
     display: flex;
