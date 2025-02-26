@@ -1,5 +1,13 @@
 .playerName {
-  color: rgb(118, 190, 210);
+  /* color: rgb(118, 190, 210); */
   font-size: 1.5em;
   padding: 0.5em;
+}
+
+.buttonLeft {
+  margin-right: 5%;
+}
+
+.buttonRight {
+  margin-left: 5%;
 }
