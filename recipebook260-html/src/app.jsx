@@ -1,13 +1,18 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './app.css';
 import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import { Login } from './login/login';
 import { Home } from './home/home';
 import { ViewRecipe } from './viewRecipe/viewRecipe';
 import { CreateRecipe } from './createRecipe/createRecipe';
+import { AuthState } from './login/authState';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './app.css';
 
-export default function App() {
+function App() {
+  const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '');
+  const currentAuthState = userName ? AuthState.Authenticated : AuthState.Unauthenticated;
+  const [authState, setAuthState] = React.useState(currentAuthState);
+
   return (
     <BrowserRouter>
         <header className="flex">
@@ -17,24 +22,33 @@ export default function App() {
                     <li className="nav-item">
                         <NavLink className='nav-link' to=''>Login</NavLink>
                     </li>
-                    <span>|</span>
-                    <li className="nav-item">
-                        <NavLink className='nav-link' to='home'>Home</NavLink>
-                    </li>
-                    <span>|</span>
+                    {authState === AuthState.Authenticated && (
+                        <li className="nav-item">
+                            <NavLink className='nav-link' to='home'>Home</NavLink>
+                        </li>
+                    )}
+                    {/* <span>|</span>
                     <li className="nav-item">
                         <NavLink className='nav-link' to='viewRecipe'>View Recipe</NavLink>
                     </li>
                     <span>|</span>
                     <li className="nav-item">
                         <NavLink className='nav-link' to='createRecipe'>Create Recipe</NavLink>
-                    </li>
+                    </li> */}
                 </menu>
             </nav>
         </header>
 
             <Routes>
-                <Route path='/' element={<Login />} exact />
+                <Route path='/' element={
+                    <Login userName={userName}
+                    authState={authState}
+                    onAuthChange={(userName, authState) => {
+                    setAuthState(authState);
+                    setUserName(userName);
+                    }}/>
+                } exact />
+
                 <Route path='/home' element={<Home />} />
                 <Route path='/viewRecipe' element={<ViewRecipe />} />
                 <Route path='/createRecipe' element={<CreateRecipe />} />
@@ -55,3 +69,5 @@ export default function App() {
 function NotFound() {
     return <main className="container-fluid bg-secondary text-center">404: Return to sender. Address unknown.</main>;
 }
+
+export default App;
