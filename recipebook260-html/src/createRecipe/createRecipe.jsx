@@ -76,39 +76,49 @@ const CreateRecipe = () => {
   };
 
   return (
-    <div>
-      <h1>Create Recipe</h1>
+    
+      <main className="flex flex-col bg-secondary">
+        <h1>Create Recipe</h1>
 
-      <div>
-        <label>Name:</label>
-        <input
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          placeholder="Enter the name"
-        />
-      </div>
+        <div className="flex flex-col">
+          <div className="flex">
+            <label>Name:</label><br></br>
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Enter the name"
+            />
 
-      <div>
-        <label>Ingredients:</label>
-        <textarea
-          value={ingredients}
-          onChange={(e) => setIngredients(e.target.value)}
-          placeholder="Enter ingredients"
-        />
-      </div>
+            <form>
+              <label>Ingredients:</label><br></br>
+              <textarea
+                type="text"
+                value={ingredients}
+                onChange={(e) => setIngredients(e.target.value)}
+                placeholder="Enter ingredients"
+                rows="4"
+                cols="50"
+              />
+            </form>
+          </div>
 
-      <div>
-        <label>Instructions:</label>
-        <textarea
-          value={instructions}
-          onChange={(e) => setInstructions(e.target.value)}
-          placeholder="Enter instructions"
-        />
-      </div>
+          <div className="flex">
+            <label>Instructions:</label><br></br>
+            <textarea
+              type="text"
+              value={instructions}
+              onChange={(e) => setInstructions(e.target.value)}
+              placeholder="Enter instructions"
+              rows="8"
+              cols="50"
+            />
+          </div>
+        </div>
 
-      <button onClick={handleSave}>Save</button>
-    </div>
+        <button onClick={handleSave}>Save</button>
+      </main>
+    
   );
 };
 
