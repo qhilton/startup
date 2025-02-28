@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import './home.css';
 
@@ -60,17 +60,17 @@ const Home = () => {
                     {/* Render recipe names dynamically */}
                     {recipes.length > 0 ? (
                         recipes.map((recipe) => (
-                        <div key={recipe.id}>{recipe.name}</div>
+                            <div key={recipe.id}>
+                                <Link className="recipe-link" to={`/viewRecipe/${recipe.id}`}>
+                                    {recipe.name}
+                                </Link>
+                            </div>
                         ))
                     ) : (
-                        <div>No recipes found</div>
+                        <div>No recipes created</div>
                     )}
 
                 </div>
-
-                
-
-                
             </main>
         </div>
     );

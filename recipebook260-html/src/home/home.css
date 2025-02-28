@@ -69,15 +69,12 @@ menu .nav-item {
     margin-right: 40px;
 }
   
-/* @media (max-height: 600px) {
-  header {
-    display: none;
-  }
-  footer {
-    display: none;
-  }
-  main {
-    flex: 1 100vh;
-  }
+.recipe-link {
+  color: #0151a7; /* Blue color */
+  text-decoration: none; /* Optional: Remove underline */
 }
-   */
+
+.recipe-link:hover {
+  color: #023366; /* Darker blue color on hover */
+  text-decoration: underline; /* Optional: Add underline on hover */
+}
