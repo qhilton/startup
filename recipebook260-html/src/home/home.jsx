@@ -6,6 +6,25 @@ import './home.css';
 const Home = () => {
     const navigate = useNavigate();
     const [recipes, setRecipes] = useState([]);
+    const [popularRecipe, setPopularRecipe] = useState("");
+
+    const popularRecipes = [
+        "Chocolate Chip Cookies",
+        "Chicken Adobo",
+        "Dinner Rolls"
+    ];
+
+    useEffect(() => {
+        let currentIndex = 0; // Keep track of the current index in the popularRecipes array
+
+        const interval = setInterval(() => {
+            setPopularRecipe(popularRecipes[currentIndex]); // Set the popular recipe to display
+            currentIndex = (currentIndex + 1) % popularRecipes.length; // Cycle through recipes
+        }, 20000); // 20 seconds interval
+
+        // Cleanup interval when the component unmounts
+        return () => clearInterval(interval);
+    }, []);
 
     useEffect(() => {
         if (typeof window !== 'undefined') { // Ensure we're in the browser context
@@ -32,9 +51,7 @@ const Home = () => {
                     <h1>
                         Popular Recipes
                     </h1>
-                    <div>Chocolate Chip Cookies</div>
-                    <div>Chicken Adobo</div>
-
+                    <div>{popularRecipe || "Loading..."}</div>
 
                     <div id="nutrition">
                         <div>100 Calories</div>
