@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import './viewRecipe.css';
 
@@ -16,29 +16,33 @@ import './viewRecipe.css';
 //   );
 // }
 
-const ViewObject = () => {
+const ViewRecipe = () => {
   const { id } = useParams(); // Get object ID from URL params
-  const [objectData, setObjectData] = useState(null);
+  const [recipeData, setRecipeData] = useState(null);
+
+  console.log("id", id);
+  console.log("recipeData", recipeData);
 
   useEffect(() => {
-    const storedObject = localStorage.getItem(id);
-    if (storedObject) {
-      setObjectData(JSON.parse(storedObject));
+    const storedRecipe = localStorage.getItem(id);
+    console.log("local", localStorage.getItem(id));
+    if (storedRecipe) {
+      setRecipeData(JSON.parse(storedRecipe));
     } else {
-      setObjectData('Object not found');
+      setRecipeData('Recipe not found');
     }
   }, [id]);
 
   return (
     <div>
-      <h1>View Object</h1>
-      {objectData ? (
+      <h1>View Recipe</h1>
+      {recipeData ? (
         <div>
-          <h2>{objectData.name}</h2>
+          <h2>{recipeData.name}</h2>
           <h3>Ingredients:</h3>
-          <p>{objectData.ingredients}</p>
+          <p>{recipeData.ingredients}</p>
           <h3>Instructions:</h3>
-          <p>{objectData.instructions}</p>
+          <p>{recipeData.instructions}</p>
         </div>
       ) : (
         <p>Loading...</p>
@@ -47,4 +51,4 @@ const ViewObject = () => {
   );
 };
 
-export default ViewObject;
+export default ViewRecipe;

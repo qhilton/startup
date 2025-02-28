@@ -50,7 +50,7 @@ function App() {
                 } exact />
 
                 <Route path='/home' element={<Home />} />
-                <Route path='/viewRecipe' element={<ViewRecipe />} />
+                <Route path='/viewRecipe/:recipeID' element={<ViewRecipe />} />
                 <Route path='/createRecipe' element={<CreateRecipe />} />
                 <Route path='*' element={<NotFound />} />
             </Routes>
