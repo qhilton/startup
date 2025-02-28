@@ -30,12 +30,7 @@ export function Home() {
                     <div className="d-flex flex-row">
                         <input className="flex left-item" type="text" placeholder="Search"></input>
 
-                        {/* <form className="flex" method="get" action="createRecipe.html">
-                            <button type="submit" className="btn btn-primary">Create New Recipe</button>
-                        </form> */}
-                        {/* <li className="nav-item">
-                            <NavLink className='nav-link' to='createRecipe'>Home</NavLink>
-                        </li> */}
+                        
                         <Button variant='primary' onClick={() => navigate('/createRecipe')}>
                             Create Recipe
                         </Button>
