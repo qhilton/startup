@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import { Login } from './login/login';
-import { Home } from './home/home';
+import Home from './home/home';
 import ViewRecipe from './viewRecipe/viewRecipe';
 import CreateRecipe from './createRecipe/createRecipe';
 import { AuthState } from './login/authState';
