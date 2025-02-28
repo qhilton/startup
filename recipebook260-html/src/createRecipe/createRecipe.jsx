@@ -72,7 +72,7 @@ const CreateRecipe = () => {
     localStorage.setItem(newRecipeId.toString(), JSON.stringify(newRecipe));
 
     // Redirect to viewObject page with the new object's ID
-    navigate(`/viewRecipe/${newRecipeId}`);
+    navigate(`/viewRecipe/${newRecipeId.toString()}`);
   };
 
   return (
