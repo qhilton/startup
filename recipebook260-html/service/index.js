@@ -6,9 +6,8 @@ const app = express();
 
 const authCookieName = 'token';
 
-// The scores and users are saved in memory and disappear whenever the service is restarted.
 let users = [];
-let scores = [];
+let recipe = [];
 
 // The service port. In production the front-end code is statically hosted by the service on the same port.
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
@@ -72,16 +71,16 @@ const verifyAuth = async (req, res, next) => {
   }
 };
 
-// GetScores
-apiRouter.get('/scores', verifyAuth, (_req, res) => {
-  res.send(scores);
-});
+// GetRecipe
+// apiRouter.get('/recipe', verifyAuth, (_req, res) => {
+//   res.send(recipe);
+// });
 
-// SubmitScore
-apiRouter.post('/score', verifyAuth, (req, res) => {
-  scores = updateScores(req.body);
-  res.send(scores);
-});
+// // SubmitRecipe
+// apiRouter.post('/recipe', verifyAuth, (req, res) => {
+//   recipe = updateRecipe(req.body);
+//   res.send(recipe);
+// });
 
 // Default error handler
 app.use(function (err, req, res, next) {
@@ -93,27 +92,24 @@ app.use((_req, res) => {
   res.sendFile('index.html', { root: 'public' });
 });
 
-// updateScores considers a new score for inclusion in the high scores.
-function updateScores(newScore) {
-  let found = false;
-  for (const [i, prevScore] of scores.entries()) {
-    if (newScore.score > prevScore.score) {
-      scores.splice(i, 0, newScore);
-      found = true;
-      break;
+function updateRecipe(newRecipe) {
+    let found = false;
+    // for (const [i, prevScore] of scores.entries()) {
+    //   if (newScore.score > prevScore.score) {
+    //     scores.splice(i, 0, newScore);
+    //     found = true;
+    //     break;
+    //   }
+    // }
+  
+    if (!found) {
+      recipe.push(newRecipe);
     }
+  
+   
+  
+    return recipe;
   }
-
-  if (!found) {
-    scores.push(newScore);
-  }
-
-  if (scores.length > 10) {
-    scores.length = 10;
-  }
-
-  return scores;
-}
 
 async function createUser(email, password) {
   const passwordHash = await bcrypt.hash(password, 10);
