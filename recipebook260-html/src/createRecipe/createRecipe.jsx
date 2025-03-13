@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-// import Recipe from '../Recipe';
 import { useNavigate } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
 import './createRecipe.css';
 
 
@@ -12,10 +12,8 @@ const CreateRecipe = (props) => {
   const navigate = useNavigate();
 
   const handleSave = () => {
-    // Generate a unique ID for the object (e.g., using timestamp)
     const newRecipeId = Date.now();
     
-    // Create the object to store
     const newRecipe = {
       id: newRecipeId,
       name: name,
@@ -23,10 +21,8 @@ const CreateRecipe = (props) => {
       instructions: instructions
     };
 
-    // Store the object in localStorage
     localStorage.setItem(newRecipeId.toString(), JSON.stringify(newRecipe));
 
-    // Redirect to viewObject page with the new object's ID
     navigate(`/viewRecipe/${newRecipeId.toString()}`);
   };
 
@@ -46,8 +42,8 @@ const CreateRecipe = (props) => {
       body: JSON.stringify(newRecipe),
     });
 
-    // Let other players know the game has concluded
-    GameNotifier.broadcastEvent(userName, GameEvent.End, newScore);
+    //GameNotifier.broadcastEvent(userName, GameEvent.End, newScore);
+    navigate(`/viewRecipe/${newRecipeId.toString()}`);
   }
 
 
@@ -95,7 +91,7 @@ const CreateRecipe = (props) => {
           </div>
         </div>
 
-        <button onClick={saveRecipe}>Save</button>
+        <Button variant='primary' onClick={saveRecipe}>Save</Button>
       </main>
     
   );

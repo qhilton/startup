@@ -32,7 +32,7 @@ const Home = () => {
 
             const allRecipes = [];
             for (let i = 0; i < localStorage.length; i++) {
-                const key = localStorage.key(i); // Get the key (which is the ID)
+                const key = localStorage.key(i);
                 if (key != "userName") {
                     const recipe = JSON.parse(localStorage.getItem(key));
                     if (recipe) {
