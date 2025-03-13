@@ -10,21 +10,21 @@ const ViewRecipe = () => {
   console.log("id", recipeID);
   console.log("recipeData", recipeData);
 
-  useEffect(() => {
-    const storedRecipe = localStorage.getItem(recipeID);
-    console.log("local", localStorage.getItem(recipeID));
-    if (storedRecipe) {
-      setRecipeData(JSON.parse(storedRecipe));
-    } else {
-      setRecipeData('Recipe not found');
-    }
-  }, [recipeID]);
+  // useEffect(() => {
+  //   const storedRecipe = localStorage.getItem(recipeID);
+  //   console.log("local", localStorage.getItem(recipeID));
+  //   if (storedRecipe) {
+  //     setRecipeData(JSON.parse(storedRecipe));
+  //   } else {
+  //     setRecipeData('Recipe not found');
+  //   }
+  // }, [recipeID]);
 
   React.useEffect(() => {
-      fetch('/api/scores')
+      fetch('/api/recipe')
         .then((response) => response.json())
-        .then((scores) => {
-          setScores(scores);
+        .then((recipeData) => {
+          setRecipeData(recipeData);
         });
     }, []);
 
