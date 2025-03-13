@@ -4,7 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import './createRecipe.css';
 
 
-const CreateRecipe = () => {
+const CreateRecipe = (props) => {
+  const userName = props.userName;
   const [name, setName] = useState('');
   const [ingredients, setIngredients] = useState('');
   const [instructions, setInstructions] = useState('');
@@ -28,6 +29,30 @@ const CreateRecipe = () => {
     // Redirect to viewObject page with the new object's ID
     navigate(`/viewRecipe/${newRecipeId.toString()}`);
   };
+
+  async function saveRecipe() {
+    const newRecipeId = Date.now();
+    const newRecipe = {
+      id: newRecipeId,
+      userName: userName,
+      recipeName: name,
+      ingredients: ingredients,
+      instructions: instructions
+    };
+
+    await fetch('/api/recipe', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(newRecipe),
+    });
+
+    // Let other players know the game has concluded
+    GameNotifier.broadcastEvent(userName, GameEvent.End, newScore);
+  }
+
+
+
+
 
   return (
     
@@ -70,7 +95,7 @@ const CreateRecipe = () => {
           </div>
         </div>
 
-        <button onClick={handleSave}>Save</button>
+        <button onClick={saveRecipe}>Save</button>
       </main>
     
   );
