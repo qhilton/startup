@@ -72,15 +72,15 @@ const verifyAuth = async (req, res, next) => {
 };
 
 // GetRecipe
-// apiRouter.get('/recipe', verifyAuth, (_req, res) => {
-//   res.send(recipe);
-// });
+apiRouter.get('/recipe', verifyAuth, (_req, res) => {
+  res.send(recipe);
+});
 
-// // SubmitRecipe
-// apiRouter.post('/recipe', verifyAuth, (req, res) => {
-//   recipe = updateRecipe(req.body);
-//   res.send(recipe);
-// });
+// SubmitRecipe
+apiRouter.post('/recipe', verifyAuth, (req, res) => {
+  recipe = updateRecipe(req.body);
+  res.send(recipe);
+});
 
 // Default error handler
 app.use(function (err, req, res, next) {
@@ -93,7 +93,7 @@ app.use((_req, res) => {
 });
 
 function updateRecipe(newRecipe) {
-    let found = false;
+    // let found = false;
     // for (const [i, prevScore] of scores.entries()) {
     //   if (newScore.score > prevScore.score) {
     //     scores.splice(i, 0, newScore);
@@ -102,12 +102,12 @@ function updateRecipe(newRecipe) {
     //   }
     // }
   
-    if (!found) {
-      recipe.push(newRecipe);
-    }
+    // if (!found) {
+    //   recipe.push(newRecipe);
+    // }
   
    
-  
+    recipe.push(newRecipe);
     return recipe;
   }
 

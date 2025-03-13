@@ -20,6 +20,17 @@ const ViewRecipe = () => {
     }
   }, [recipeID]);
 
+  React.useEffect(() => {
+      fetch('/api/scores')
+        .then((response) => response.json())
+        .then((scores) => {
+          setScores(scores);
+        });
+    }, []);
+
+
+
+
   return (
     <div>
       <main className="flex flex-col bg-secondary">
