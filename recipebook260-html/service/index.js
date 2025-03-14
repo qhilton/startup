@@ -63,8 +63,6 @@ apiRouter.delete('/auth/logout', async (req, res) => {
 
 // Middleware to verify that the user is authorized to call an endpoint
 const verifyAuth = async (req, res, next) => {
-    console.log("auth");
-
     const user = await findUser('token', req.cookies[authCookieName]);
     if (user) {
         next();
@@ -96,6 +94,7 @@ apiRouter.post('/createRecipe', verifyAuth, (req, res) => {
     res.send(recipes);
 });
 
+
 // Default error handler
 app.use(function (err, req, res, next) {
     res.status(500).send({ type: err.name, message: err.message });
@@ -107,19 +106,6 @@ app.use((_req, res) => {
 });
 
 function updateRecipe(newRecipe) {
-    // let found = false;
-    // for (const [i, prevScore] of scores.entries()) {
-    //   if (newScore.score > prevScore.score) {
-    //     scores.splice(i, 0, newScore);
-    //     found = true;
-    //     break;
-    //   }
-    // }
-  
-    // if (!found) {
-    //   recipe.push(newRecipe);
-    // }
-
     recipes.push(newRecipe);
     return recipes;
   }

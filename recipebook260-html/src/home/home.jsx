@@ -7,6 +7,8 @@ const Home = () => {
     const navigate = useNavigate();
     const [recipes, setRecipes] = useState([]);
     const [popularRecipe, setPopularRecipe] = useState("");
+    const [pokemonName, setPokemonName] = useState("");
+    const [pokemonStat, setPokemonStat] = useState("");
 
     const popularRecipes = [
         "Chocolate Chip Cookies",
@@ -25,6 +27,15 @@ const Home = () => {
         return () => clearInterval(interval);
     }, []);
 
+    useEffect(() => {
+        fetch('https://pokeapi.co/api/v2/pokemon/charmander')
+        .then((response) => response.json())
+        .then((data) => {
+            setPokemonName(data.name);
+            setPokemonStat(data.stats[1].base_stat);
+        })
+        .catch();
+    }, []);
 
     useEffect(() => {
         fetch('/api/recipes')
@@ -33,8 +44,6 @@ const Home = () => {
             setRecipes(recipes);
           });
     }, []);
-
-    console.log("recipes", recipes);
 
     return (
         <div className="flex flex-1 flex-col">
@@ -45,8 +54,8 @@ const Home = () => {
                     </h1>
                     <div>{popularRecipe}</div>
 
-                    <div id="nutrition">
-                        <div>100 Calories</div>
+                    <div>
+                        {pokemonName} has a base attack stat of {pokemonStat}
                     </div>
                 </div>
             
