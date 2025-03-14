@@ -114,11 +114,11 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Node.js/Express HTTP service** - I did not complete this part of the deliverable.
-- [ ] **Static middleware for frontend** - I did not complete this part of the deliverable.
-- [ ] **Calls to third party endpoints** - I did not complete this part of the deliverable.
-- [ ] **Backend service endpoints** - I did not complete this part of the deliverable.
-- [ ] **Frontend calls service endpoints** - I did not complete this part of the deliverable.
+- [x] **Node.js/Express HTTP service** - I used node.js with express in my index.js file.
+- [x] **Static middleware for frontend** - I added middleware to make sure authorization is needed.
+- [x] **Calls to third party endpoints** - I added a 3rd party api call in my home.jsx.
+- [x] **Backend service endpoints** - I endpoints in index.js.
+- [x] **Frontend calls service endpoints** - I call the endpoints on the frontend.
 
 ## 🚀 DB/Login deliverable
 

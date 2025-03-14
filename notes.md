@@ -68,3 +68,9 @@ Handling the toggling of the checkboxes was particularly interesting.
   ))}
 </div>
 ```
+
+## Service
+
+added 3rd party api in home.jsx
+had some errors with 404, but I fixed it somehow
+if you change index.js, rerun node index.js to see changes
