@@ -74,15 +74,28 @@ const verifyAuth = async (req, res, next) => {
 };
 
 // GetRecipe
-apiRouter.get('/recipes', verifyAuth, (_req, res) => {
-  res.send(recipes);
+apiRouter.get('/viewRecipe/:recipeID', verifyAuth, (_req, res) => {
+    const { recipeID } = _req.params;
+    
+    console.log("view");
+    console.log(recipeID);
+    //console.log("req", _req);
+    const recipe = recipes.find(r => r.id === recipeID);
+    console.log(recipe);
+    //res.send(recipes);
+
+    if (recipe) {
+        res.send(recipe); // Send the found recipe as a response
+      } else {
+        res.status(404).send({ msg: 'Recipe not found' });
+      }
 });
 
 // CreateRecipe
 apiRouter.post('/createRecipe', verifyAuth, (req, res) => {
     console.log("req", req.body);
     recipes = updateRecipe(req.body);
-    
+    console.log("hello there");
     res.send(recipes);
 });
 
@@ -109,9 +122,10 @@ function updateRecipe(newRecipe) {
     // if (!found) {
     //   recipe.push(newRecipe);
     // }
-  
-   
+
+    console.log("here");
     recipes.push(newRecipe);
+    console.log("recipes", recipes);
     return recipes;
   }
 

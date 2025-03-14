@@ -21,12 +21,20 @@ const ViewRecipe = () => {
   // }, [recipeID]);
 
   useEffect(() => {
-    fetch('/api/recipes')
+    fetch(`/api/viewRecipe/${recipeID}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
       .then((response) => response.json())
       .then((recipeData) => {
         setRecipeData(recipeData);
-      });
-  }, []);
+      })
+      .catch((error) => console.error('Error fetching recipe:', error));
+  }, [recipeID]);
+
+  
 
 
 
@@ -36,7 +44,7 @@ const ViewRecipe = () => {
       <main className="flex flex-col bg-secondary">
         {recipeData ? (
           <div>
-            <h1>{recipeData.name}</h1>
+            <h1>{recipeData.recipeName}</h1>
             <h3>Ingredients:</h3>
             <p>{recipeData.ingredients}</p>
             <h3>Instructions:</h3>

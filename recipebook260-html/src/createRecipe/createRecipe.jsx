@@ -27,7 +27,7 @@ const CreateRecipe = () => {
   // };
 
   async function saveRecipe() {
-    const newRecipeId = Date.now();
+    const newRecipeId = Date.now().toString();
     const newRecipe = {
       id: newRecipeId,
       userName: userName,
@@ -52,7 +52,7 @@ const CreateRecipe = () => {
     }
 
     //GameNotifier.broadcastEvent(userName, GameEvent.End, newScore);
-    //navigate(`/viewRecipe/${newRecipeId.toString()}`);
+    navigate(`/viewRecipe/${newRecipeId}`);
   }
 
 
