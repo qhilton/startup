@@ -26,23 +26,33 @@ const Home = () => {
         return () => clearInterval(interval);
     }, []);
 
-    useEffect(() => {
-        if (typeof window !== 'undefined') { // Ensure we're in the browser context
-            // Load all recipes from localStorage
+    // useEffect(() => {
+    //     if (typeof window !== 'undefined') { // Ensure we're in the browser context
+    //         // Load all recipes from localStorage
 
-            const allRecipes = [];
-            for (let i = 0; i < localStorage.length; i++) {
-                const key = localStorage.key(i);
-                if (key != "userName") {
-                    const recipe = JSON.parse(localStorage.getItem(key));
-                    if (recipe) {
-                        allRecipes.push(recipe);
-                    }
-                }
-            }
-            setRecipes(allRecipes);
-          }
-        }, []);
+    //         const allRecipes = [];
+    //         for (let i = 0; i < localStorage.length; i++) {
+    //             const key = localStorage.key(i);
+    //             if (key != "userName") {
+    //                 const recipe = JSON.parse(localStorage.getItem(key));
+    //                 if (recipe) {
+    //                     allRecipes.push(recipe);
+    //                 }
+    //             }
+    //         }
+    //         setRecipes(allRecipes);
+    //       }
+    //     }, []);
+
+    useEffect(() => {
+        fetch('/api/recipes')
+          .then((response) => response.json())
+          .then((recipes) => {
+            setRecipes(recipes);
+          });
+    }, []);
+
+    console.log("recipes", recipes);
 
     return (
         <div className="flex flex-1 flex-col">
