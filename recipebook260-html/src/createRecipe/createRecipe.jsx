@@ -4,27 +4,27 @@ import Button from 'react-bootstrap/Button';
 import './createRecipe.css';
 
 
-const CreateRecipe = (props) => {
-  const userName = props.userName;
+const CreateRecipe = () => {
+  const userName = localStorage.getItem('userName');
   const [name, setName] = useState('');
   const [ingredients, setIngredients] = useState('');
   const [instructions, setInstructions] = useState('');
   const navigate = useNavigate();
 
-  const handleSave = () => {
-    const newRecipeId = Date.now();
+  // const handleSave = () => {
+  //   const newRecipeId = Date.now();
     
-    const newRecipe = {
-      id: newRecipeId,
-      name: name,
-      ingredients: ingredients,
-      instructions: instructions
-    };
+  //   const newRecipe = {
+  //     id: newRecipeId,
+  //     name: name,
+  //     ingredients: ingredients,
+  //     instructions: instructions
+  //   };
 
-    localStorage.setItem(newRecipeId.toString(), JSON.stringify(newRecipe));
+  //   localStorage.setItem(newRecipeId.toString(), JSON.stringify(newRecipe));
 
-    navigate(`/viewRecipe/${newRecipeId.toString()}`);
-  };
+  //   navigate(`/viewRecipe/${newRecipeId.toString()}`);
+  // };
 
   async function saveRecipe() {
     const newRecipeId = Date.now();
@@ -36,15 +36,38 @@ const CreateRecipe = (props) => {
       instructions: instructions
     };
 
-    await fetch('/api/recipe', {
+    console.log(newRecipe);
+
+    const response = await fetch('/api/createRecipe', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(newRecipe),
+      credentials: 'include',
     });
 
+    if (response.ok) {
+      console.log('Recipe saved successfully');
+    } else {
+      console.error('Failed to save recipe:', response.status, response.statusText);
+    }
+
     //GameNotifier.broadcastEvent(userName, GameEvent.End, newScore);
-    navigate(`/viewRecipe/${newRecipeId.toString()}`);
+    //navigate(`/viewRecipe/${newRecipeId.toString()}`);
   }
+
+
+  // function logout() {
+  //   fetch(`/api/auth/logout`, {
+  //     method: 'delete',
+  //   })
+  //     .catch(() => {
+  //       // Logout failed. Assuming offline
+  //     })
+  //     .finally(() => {
+  //       localStorage.removeItem('userName');
+  //       props.onLogout();
+  //     });
+  // }
 
 
 

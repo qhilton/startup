@@ -20,13 +20,13 @@ const ViewRecipe = () => {
   //   }
   // }, [recipeID]);
 
-  React.useEffect(() => {
-      fetch('/api/recipe')
-        .then((response) => response.json())
-        .then((recipeData) => {
-          setRecipeData(recipeData);
-        });
-    }, []);
+  useEffect(() => {
+    fetch('/api/recipes')
+      .then((response) => response.json())
+      .then((recipeData) => {
+        setRecipeData(recipeData);
+      });
+  }, []);
 
 
 
