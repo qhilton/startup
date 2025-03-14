@@ -15,34 +15,16 @@ const Home = () => {
     ];
 
     useEffect(() => {
-        let currentIndex = 0; // Keep track of the current index in the popularRecipes array
+        let currentIndex = 0;
 
         const interval = setInterval(() => {
-            setPopularRecipe(popularRecipes[currentIndex]); // Set the popular recipe to display
-            currentIndex = (currentIndex + 1) % popularRecipes.length; // Cycle through recipes
-        }, 20000); // 20 seconds interval
+            setPopularRecipe(popularRecipes[currentIndex]);
+            currentIndex = (currentIndex + 1) % popularRecipes.length;
+        }, 10000);
 
-        // Cleanup interval when the component unmounts
         return () => clearInterval(interval);
     }, []);
 
-    // useEffect(() => {
-    //     if (typeof window !== 'undefined') { // Ensure we're in the browser context
-    //         // Load all recipes from localStorage
-
-    //         const allRecipes = [];
-    //         for (let i = 0; i < localStorage.length; i++) {
-    //             const key = localStorage.key(i);
-    //             if (key != "userName") {
-    //                 const recipe = JSON.parse(localStorage.getItem(key));
-    //                 if (recipe) {
-    //                     allRecipes.push(recipe);
-    //                 }
-    //             }
-    //         }
-    //         setRecipes(allRecipes);
-    //       }
-    //     }, []);
 
     useEffect(() => {
         fetch('/api/recipes')
@@ -61,7 +43,7 @@ const Home = () => {
                     <h1>
                         Popular Recipes
                     </h1>
-                    <div>{popularRecipe || "Loading..."}</div>
+                    <div>{popularRecipe}</div>
 
                     <div id="nutrition">
                         <div>100 Calories</div>
@@ -81,15 +63,12 @@ const Home = () => {
                             Create Recipe
                         </Button>
                     </div>
-                    {/* <div>Dinner Rolls</div>
-                    <div>Mashed Potatoes</div> */}
 
-                    {/* Render recipe names dynamically */}
                     {recipes.length > 0 ? (
                         recipes.map((recipe) => (
                             <div key={recipe.id}>
                                 <Link className="recipe-link" to={`/viewRecipe/${recipe.id}`}>
-                                    {recipe.name}
+                                    {recipe.recipeName}
                                 </Link>
                             </div>
                         ))
