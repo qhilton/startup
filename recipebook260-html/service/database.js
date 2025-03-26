@@ -5,7 +5,7 @@ const url = `mongodb+srv://${config.userName}:${config.password}@${config.hostna
 const client = new MongoClient(url);
 const db = client.db('recipebook');
 const userCollection = db.collection('user');
-const scoreCollection = db.collection('score');
+const recipeCollection = db.collection('recipe');
 
 // This will asynchronously test the connection and exit the process if it fails
 (async function testConnection() {
@@ -34,11 +34,21 @@ async function updateUser(user) {
   await userCollection.updateOne({ email: user.email }, { $set: user });
 }
 
+function getAllRecipes() {
+  const query = { recipe: { $gt: 0, $lt: 900 } };
+  const options = {
+    sort: { score: -1 },
+    limit: 10,
+  };
+  const cursor = recipeCollection.find(query, options);
+  return cursor.toArray();
+}
+
 module.exports = {
     getUser,
     getUserByToken,
     addUser,
     updateUser,
     // addScore,
-    // getHighScores,
+    getAllRecipes,
   };

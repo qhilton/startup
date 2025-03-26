@@ -8,8 +8,8 @@ const DB = require('./database.js');
 
 const authCookieName = 'token';
 
-let users = [];
-let recipes = [];
+//let users = [];
+//let recipes = [];
 
 // The service port. In production the front-end code is statically hosted by the service on the same port.
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
@@ -82,13 +82,14 @@ apiRouter.get('/viewRecipe/:recipeID', verifyAuth, (_req, res) => {
 
     if (recipe) {
         res.send(recipe);
-      } else {
+    } else {
         res.status(404).send({ msg: 'Recipe not found' });
-      }
+    }
 });
 
 // GetAllRecipe
 apiRouter.get('/recipes', verifyAuth, (_req, res) => {
+    const recipes = await DB.getAllRecipes();
     res.send(recipes);
 });
 
