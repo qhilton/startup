@@ -10,6 +10,7 @@ const Home = () => {
     const [popularRecipe, setPopularRecipe] = useState("");
     const [pokemonName, setPokemonName] = useState("");
     const [pokemonStat, setPokemonStat] = useState("");
+    const [recipeName, setRecipeName] = useState("");
 
     const popularRecipes = [
         "Chocolate Chip Cookies",
@@ -46,6 +47,26 @@ const Home = () => {
           });
     }, []);
 
+
+    const handleSearch = async () => {
+        if (recipeName) {
+          try {
+            console.log("recipeName", recipeName);
+            const response = await fetch(`/api/searchRecipe/${recipeName}`);
+            console.log("after response", response);
+            const recipe = await response.json();
+            if (recipe) {
+              navigate(`/viewRecipe/${recipe.id}`);
+            } else {
+              alert("Recipe not found");
+            }
+          } catch (error) {
+            console.error("Error searching recipe:", error);
+          }
+        }
+      };
+
+
     return (
         <div className="flex flex-1 flex-col">
             <main className="flex bg-secondary">
@@ -66,8 +87,15 @@ const Home = () => {
                     </h1>
 
                     <div className="d-flex flex-row">
-                        <input className="flex left-item" type="text" placeholder="Search"></input>
-
+                        {/* <input className="flex left-item" type="text" placeholder="Search"></input> */}
+                        <input
+                        className="flex left-item"
+                        type="text"
+                        placeholder="Search by recipe name"
+                        value={recipeName}
+                        onChange={(e) => setRecipeName(e.target.value)} // Update the search term as the user types
+                        />
+                        <Button variant="primary" onClick={handleSearch}>Search</Button>
                         
                         <Button variant='primary' onClick={() => navigate('/createRecipe')}>
                             Create Recipe

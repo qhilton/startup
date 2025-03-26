@@ -87,6 +87,17 @@ apiRouter.get('/viewRecipe/:recipeID', verifyAuth, async (_req, res) => {
     }
 });
 
+apiRouter.get('/searchRecipe/:recipeName', verifyAuth, async (_req, res) => {
+    const { recipeName } = _req.params;
+    console.log("recipeName", recipeName);
+    const recipe = await DB.getRecipeByName(recipeName);
+    if (recipe) {
+      res.json(recipe);
+    } else {
+      res.status(404).send('Recipe not found');
+    }
+  });
+
 // GetAllRecipe
 apiRouter.get('/recipes/:userName', verifyAuth, async (_req, res) => {
     const { userName } = _req.params;

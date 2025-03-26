@@ -43,6 +43,11 @@ function getRecipeById(recipeId) {
     
     const recipe = recipeCollection.findOne(query);
     return recipe;
+}
+
+function getRecipeByName(recipeName) {
+    const query = { recipeName: recipeName };
+    return recipeCollection.findOne(query);
   }
 
 function getUserRecipes(userName) {
@@ -61,5 +66,6 @@ module.exports = {
     updateUser,
     addRecipe,
     getRecipeById,
+    getRecipeByName,
     getUserRecipes,
   };
