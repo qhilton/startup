@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import './home.css';
+import { MessageDialog } from './messageDialog';
 
 const Home = () => {
     const navigate = useNavigate();
@@ -11,6 +12,8 @@ const Home = () => {
     const [pokemonName, setPokemonName] = useState("");
     const [pokemonStat, setPokemonStat] = useState("");
     const [recipeName, setRecipeName] = useState("");
+    const [showError, setShowError] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
 
     const popularRecipes = [
         "Chocolate Chip Cookies",
@@ -51,18 +54,27 @@ const Home = () => {
     const handleSearch = async () => {
         if (recipeName) {
           try {
-            console.log("recipeName", recipeName);
             const response = await fetch(`/api/searchRecipe/${recipeName}`);
-            console.log("after response", response);
-            const recipe = await response.json();
-            if (recipe) {
-              navigate(`/viewRecipe/${recipe.id}`);
-            } else {
-              alert("Recipe not found");
+            if (!response.ok) {
+                throw new Error(`Error: ${response.statusText}`);
+              }
+      
+              const recipe = await response.json();
+      
+              if (recipe) {
+                navigate(`/viewRecipe/${recipe.id}`);
+              } else {
+                setErrorMessage("Recipe not found");
+                setShowError(true);
+              }
+            } catch (error) {
+              console.error("Error searching recipe:", error);
+              setErrorMessage("An error occurred while searching for the recipe.");
+              setShowError(true); // Show the error modal on any other error
             }
-          } catch (error) {
-            console.error("Error searching recipe:", error);
-          }
+        } else {
+            setErrorMessage("Please enter a recipe name.");
+            setShowError(true); // Show the error modal if search term is empty
         }
       };
 
@@ -116,6 +128,13 @@ const Home = () => {
 
                 </div>
             </main>
+
+            <MessageDialog
+                show={showError}
+                message={errorMessage}
+                onHide={() => setShowError(false)} // Hide the modal when closed
+            />
+
         </div>
     );
 }
