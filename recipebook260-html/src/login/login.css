@@ -1,6 +1,6 @@
 .main {
     background-color: 'white';
-      background-image: url('../public/newrecipebook.jpg');
+      background-image: url('/newrecipebook.jpg');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
