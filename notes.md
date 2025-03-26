@@ -74,3 +74,11 @@ Handling the toggling of the checkboxes was particularly interesting.
 added 3rd party api in home.jsx
 had some errors with 404, but I fixed it somehow
 if you change index.js, rerun node index.js to see changes
+
+
+## DB
+
+i had an issue with deploying but i reinstalled mongodb into my service class
+  - ssh -i C:/users/Quintin/Downloads/kirgan11.pem ubuntu@recipebook260.click 
+  - pm2 logs startup
+- ./deployService.sh -k C:/users/Quintin/Downloads/kirgan11.pem -h recipebook260.click -s startup
