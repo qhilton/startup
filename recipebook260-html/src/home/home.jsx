@@ -109,9 +109,7 @@ const Home = () => {
                         />
                         <Button variant="primary" onClick={handleSearch}>Search</Button>
                         
-                        <Button variant='primary' onClick={() => navigate('/createRecipe')}>
-                            Create Recipe
-                        </Button>
+                        
                     </div>
 
                     {recipes.length > 0 ? (
@@ -125,7 +123,9 @@ const Home = () => {
                     ) : (
                         <div>No recipes created</div>
                     )}
-
+                        <Button variant='primary' onClick={() => navigate('/createRecipe')}>
+                            Create Recipe
+                        </Button>
                 </div>
             </main>
 
