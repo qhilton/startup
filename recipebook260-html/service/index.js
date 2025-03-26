@@ -88,14 +88,16 @@ apiRouter.get('/viewRecipe/:recipeID', verifyAuth, (_req, res) => {
 });
 
 // GetAllRecipe
-apiRouter.get('/recipes', verifyAuth, async (_req, res) => {
-    const recipes = await DB.getAllRecipes();
+apiRouter.get('/recipes/:userName', verifyAuth, async (_req, res) => {
+    const { userName } = _req.params;
+    const recipes = await DB.getUserRecipes(userName);
     res.send(recipes);
 });
 
 // CreateRecipe
-apiRouter.post('/createRecipe', verifyAuth, (req, res) => {
-    recipes = updateRecipe(req.body);
+apiRouter.post('/createRecipe', verifyAuth, async (req, res) => {
+    //recipes = updateRecipe(req.body);
+    recipes = await DB.addRecipe(newRecipe);
     res.send(recipes);
 });
 
@@ -110,10 +112,10 @@ app.use((_req, res) => {
     res.sendFile('index.html', { root: 'public' });
 });
 
-async function updateRecipe(newRecipe) {
-    await DB.addRecipe(newRecipe);
-    return DB.getAllRecipes();
-  }
+// async function updateRecipe(newRecipe) {
+//     await DB.addRecipe(newRecipe);
+//     return DB.getUserRecipes();
+//   }
 
 async function createUser(email, password) {
     const passwordHash = await bcrypt.hash(password, 10);

@@ -5,6 +5,7 @@ import './home.css';
 
 const Home = () => {
     const navigate = useNavigate();
+    const userName = localStorage.getItem('userName');
     const [recipes, setRecipes] = useState([]);
     const [popularRecipe, setPopularRecipe] = useState("");
     const [pokemonName, setPokemonName] = useState("");
@@ -38,7 +39,7 @@ const Home = () => {
     }, []);
 
     useEffect(() => {
-        fetch('/api/recipes')
+        fetch(`/api/recipes/${userName}`)
           .then((response) => response.json())
           .then((recipes) => {
             setRecipes(recipes);

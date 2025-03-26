@@ -38,14 +38,13 @@ async function addRecipe(recipe) {
   return recipeCollection.insertOne(recipe);
 }
 
-function getAllRecipes() {
-  const query = { recipe: { $gt: 0, $lt: 900 } };
-  const options = {
-    sort: { score: -1 },
-    limit: 10,
-  };
-  const cursor = recipeCollection.find(query, options);
-  return cursor.toArray();
+function getUserRecipes(userName) {
+    const query = { userName: userName };
+    const options = {
+        sort: { recipeName: 1 },
+    };
+    const cursor = recipeCollection.find(query, options);
+    return cursor.toArray();
 }
 
 module.exports = {
@@ -54,5 +53,5 @@ module.exports = {
     addUser,
     updateUser,
     addRecipe,
-    getAllRecipes,
+    getUserRecipes,
   };
