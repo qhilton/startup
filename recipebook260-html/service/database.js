@@ -34,6 +34,10 @@ async function updateUser(user) {
   await userCollection.updateOne({ email: user.email }, { $set: user });
 }
 
+async function addRecipe(recipe) {
+  return recipeCollection.insertOne(recipe);
+}
+
 function getAllRecipes() {
   const query = { recipe: { $gt: 0, $lt: 900 } };
   const options = {
@@ -49,6 +53,6 @@ module.exports = {
     getUserByToken,
     addUser,
     updateUser,
-    // addScore,
+    addRecipe,
     getAllRecipes,
   };

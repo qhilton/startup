@@ -88,7 +88,7 @@ apiRouter.get('/viewRecipe/:recipeID', verifyAuth, (_req, res) => {
 });
 
 // GetAllRecipe
-apiRouter.get('/recipes', verifyAuth, (_req, res) => {
+apiRouter.get('/recipes', verifyAuth, async (_req, res) => {
     const recipes = await DB.getAllRecipes();
     res.send(recipes);
 });
@@ -110,8 +110,8 @@ app.use((_req, res) => {
     res.sendFile('index.html', { root: 'public' });
 });
 
-function updateRecipe(newRecipe) {
-    recipes.push(newRecipe);
+async function updateRecipe(newRecipe) {
+    await DB.addRecipe(newRecipe);
     return recipes;
   }
 
