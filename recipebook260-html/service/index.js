@@ -97,7 +97,7 @@ apiRouter.get('/recipes/:userName', verifyAuth, async (_req, res) => {
 // CreateRecipe
 apiRouter.post('/createRecipe', verifyAuth, async (req, res) => {
     //recipes = updateRecipe(req.body);
-    recipes = await DB.addRecipe(newRecipe);
+    recipes = await DB.addRecipe(req.body);
     res.send(recipes);
 });
 
