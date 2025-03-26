@@ -112,7 +112,7 @@ app.use((_req, res) => {
 
 async function updateRecipe(newRecipe) {
     await DB.addRecipe(newRecipe);
-    return recipes;
+    return DB.getAllRecipes();
   }
 
 async function createUser(email, password) {
