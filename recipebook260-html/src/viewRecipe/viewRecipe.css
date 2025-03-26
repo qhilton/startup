@@ -69,6 +69,10 @@ menu .nav-item {
     margin-right: 20px;
 }
 
+.button {
+  margin-left: 120px;
+}
+
 p {
     border: 2px solid black;
     padding: 10px;

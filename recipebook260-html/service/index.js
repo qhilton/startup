@@ -76,9 +76,9 @@ const verifyAuth = async (req, res, next) => {
 };
 
 // GetRecipe
-apiRouter.get('/viewRecipe/:recipeID', verifyAuth, (_req, res) => {
+apiRouter.get('/viewRecipe/:recipeID', verifyAuth, async (_req, res) => {
     const { recipeID } = _req.params;
-    const recipe = recipes.find(r => r.id === recipeID);
+    const recipe = await DB.getRecipeById(recipeID);
 
     if (recipe) {
         res.send(recipe);

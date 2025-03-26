@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
 import './viewRecipe.css';
 
 
 const ViewRecipe = () => {
+  const navigate = useNavigate();
   const { recipeID } = useParams();
   const [recipeData, setRecipeData] = useState(null);
 
@@ -49,6 +51,9 @@ const ViewRecipe = () => {
             <p>{recipeData.ingredients}</p>
             <h3>Instructions:</h3>
             <p>{recipeData.instructions}</p>
+            <Button className="button" variant='primary' onClick={() => navigate('/home')}>
+              Home
+            </Button>
           </div>
         ) : (
           <p>Loading...</p>

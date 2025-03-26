@@ -38,6 +38,13 @@ async function addRecipe(recipe) {
   return recipeCollection.insertOne(recipe);
 }
 
+function getRecipeById(recipeId) {
+    const query = { id: recipeId };
+    
+    const recipe = recipeCollection.findOne(query);
+    return recipe;
+  }
+
 function getUserRecipes(userName) {
     const query = { userName: userName };
     const options = {
@@ -53,5 +60,6 @@ module.exports = {
     addUser,
     updateUser,
     addRecipe,
+    getRecipeById,
     getUserRecipes,
   };
