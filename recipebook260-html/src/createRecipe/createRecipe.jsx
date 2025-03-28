@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
+import { notifier } from './notifier';
 import './createRecipe.css';
 
 
@@ -10,21 +11,6 @@ const CreateRecipe = () => {
   const [ingredients, setIngredients] = useState('');
   const [instructions, setInstructions] = useState('');
   const navigate = useNavigate();
-
-  // const handleSave = () => {
-  //   const newRecipeId = Date.now();
-    
-  //   const newRecipe = {
-  //     id: newRecipeId,
-  //     name: name,
-  //     ingredients: ingredients,
-  //     instructions: instructions
-  //   };
-
-  //   localStorage.setItem(newRecipeId.toString(), JSON.stringify(newRecipe));
-
-  //   navigate(`/viewRecipe/${newRecipeId.toString()}`);
-  // };
 
   async function saveRecipe() {
     const newRecipeId = Date.now().toString();
@@ -46,13 +32,20 @@ const CreateRecipe = () => {
     });
 
     if (response.ok) {
-      console.log('Recipe saved successfully');
+      //console.log('Recipe saved successfully');
+      const message = `${userName} added a new recipe for ${name}`;
+      notifier.broadcastEvent('Recipebook', 'newRecipeCreated', {
+        message: message,
+        userName: userName,
+        recipeName: name,
+        recipeId: newRecipeId,
+      });
+      navigate(`/viewRecipe/${newRecipeId}`);
     } else {
       console.error('Failed to save recipe:', response.status, response.statusText);
     }
 
-    //GameNotifier.broadcastEvent(userName, GameEvent.End, newScore);
-    navigate(`/viewRecipe/${newRecipeId}`);
+    
   }
 
 
