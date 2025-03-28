@@ -3,6 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import './home.css';
 import { MessageDialog } from './messageDialog';
+import { notifier } from './notifier';
 
 const Home = () => {
     const navigate = useNavigate();
@@ -14,6 +15,7 @@ const Home = () => {
     const [recipeName, setRecipeName] = useState("");
     const [showError, setShowError] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
+    const [newRecipeMessage, setNewRecipeMessage] = useState("");
 
     const popularRecipes = [
         "Chocolate Chip Cookies",
@@ -50,6 +52,21 @@ const Home = () => {
           });
     }, []);
 
+    useEffect(() => {
+        notifier.addHandler((event) => {
+            if (event.value.message) {
+                setNewRecipeMessage(event.value.message);
+            }
+        });
+        
+        return () => {
+            notifier.removeHandler((event) => {
+                if (event.value.message) {
+                    setNewRecipeMessage(event.value.message);
+                }
+            });
+        };
+    }, []);
 
     const handleSearch = async () => {
         if (recipeName) {
@@ -70,11 +87,11 @@ const Home = () => {
             } catch (error) {
               console.error("Error searching recipe:", error);
               setErrorMessage("An error occurred while searching for the recipe.");
-              setShowError(true); // Show the error modal on any other error
+              setShowError(true);
             }
         } else {
             setErrorMessage("Please enter a recipe name.");
-            setShowError(true); // Show the error modal if search term is empty
+            setShowError(true);
         }
       };
 
@@ -128,6 +145,12 @@ const Home = () => {
                         </Button>
                 </div>
             </main>
+
+            {newRecipeMessage && (
+                <div className="new-recipe-message">
+                    <strong>{newRecipeMessage}</strong>
+                </div>
+            )}
 
             <MessageDialog
                 show={showError}
