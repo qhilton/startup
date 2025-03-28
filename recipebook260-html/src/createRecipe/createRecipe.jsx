@@ -22,8 +22,6 @@ const CreateRecipe = () => {
       instructions: instructions
     };
 
-    console.log(newRecipe);
-
     const response = await fetch('/api/createRecipe', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
@@ -34,7 +32,7 @@ const CreateRecipe = () => {
     if (response.ok) {
       //console.log('Recipe saved successfully');
       const message = `${userName} added a new recipe for ${name}`;
-      notifier.broadcastEvent('Recipebook', 'newRecipeCreated', {
+      notifier.broadcastEvent('Recipebook', {
         message: message,
         userName: userName,
         recipeName: name,

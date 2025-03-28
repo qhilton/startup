@@ -54,6 +54,7 @@ const Home = () => {
 
     useEffect(() => {
         notifier.addHandler((event) => {
+            //console.log("event", event);
             if (event.value.message) {
                 setNewRecipeMessage(event.value.message);
                 console.log("message", newRecipeMessage);
@@ -68,6 +69,12 @@ const Home = () => {
             });
         };
     }, []);
+
+    useEffect(() => {
+        if (newRecipeMessage) {
+            console.log("New message:", newRecipeMessage);
+        }
+    }, [newRecipeMessage]);
 
     const handleSearch = async () => {
         if (recipeName) {

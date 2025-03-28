@@ -9,19 +9,6 @@ const ViewRecipe = () => {
   const { recipeID } = useParams();
   const [recipeData, setRecipeData] = useState(null);
 
-  console.log("id", recipeID);
-  console.log("recipeData", recipeData);
-
-  // useEffect(() => {
-  //   const storedRecipe = localStorage.getItem(recipeID);
-  //   console.log("local", localStorage.getItem(recipeID));
-  //   if (storedRecipe) {
-  //     setRecipeData(JSON.parse(storedRecipe));
-  //   } else {
-  //     setRecipeData('Recipe not found');
-  //   }
-  // }, [recipeID]);
-
   useEffect(() => {
     fetch(`/api/viewRecipe/${recipeID}`, {
       method: 'GET',

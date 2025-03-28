@@ -29,6 +29,7 @@ class Notifier {
 
     broadcastEvent(from, value) {
         const event = new EventMessage(from, value);
+        console.log("Broadcasting event:", event);
         if (this.socket.readyState === WebSocket.OPEN) {
             this.socket.send(JSON.stringify(event));
         } else {
