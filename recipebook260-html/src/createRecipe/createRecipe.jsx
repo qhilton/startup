@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
-import { notifier } from './notifier';
+import { notifier } from '../notifier';
 import './createRecipe.css';
 
 

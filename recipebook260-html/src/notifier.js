@@ -27,9 +27,15 @@ class Notifier {
         };
     }
 
-    broadcastEvent(from, type, value) {
+    broadcastEvent(from, value) {
         const event = new EventMessage(from, value);
-        this.socket.send(JSON.stringify(event));
+        if (this.socket.readyState === WebSocket.OPEN) {
+            this.socket.send(JSON.stringify(event));
+        } else {
+            this.socket.onopen = () => {
+                this.socket.send(JSON.stringify(event));
+            };
+        }
     }
 
     addHandler(handler) {

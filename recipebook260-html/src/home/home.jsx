@@ -3,7 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import './home.css';
 import { MessageDialog } from './messageDialog';
-import { notifier } from './notifier';
+import { notifier } from '../notifier';
 
 const Home = () => {
     const navigate = useNavigate();
@@ -56,6 +56,7 @@ const Home = () => {
         notifier.addHandler((event) => {
             if (event.value.message) {
                 setNewRecipeMessage(event.value.message);
+                console.log("message", newRecipeMessage);
             }
         });
         
