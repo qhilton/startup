@@ -82,3 +82,8 @@ i had an issue with deploying but i reinstalled mongodb into my service class
   - ssh -i C:/users/Quintin/Downloads/kirgan11.pem ubuntu@recipebook260.click 
   - pm2 logs startup
 - ./deployService.sh -k C:/users/Quintin/Downloads/kirgan11.pem -h recipebook260.click -s startup
+
+
+## Websocket
+
+i had an issue with connecting to the websocket, but i need to change to port to the same as the server

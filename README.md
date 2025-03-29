@@ -134,8 +134,8 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Backend listens for WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **Frontend makes WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **Data sent over WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **WebSocket data displayed** - I did not complete this part of the deliverable.
-- [ ] **Application is fully functional** - I did not complete this part of the deliverable.
+- [x] **Backend listens for WebSocket connection** - I have a peerPRoxy class that listens for the Websocket connection.
+- [x] **Frontend makes WebSocket connection** - I have createRecipe send and home receive messages after a recipe is created.
+- [x] **Data sent over WebSocket connection** - I use a notifier class to send messages.
+- [x] **WebSocket data displayed** - home.js displays messages after a new recipe is made by a different user.
+- [x] **Application is fully functional** - my application is fully functional.
