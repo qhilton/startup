@@ -90,7 +90,6 @@ apiRouter.get('/viewRecipe/:recipeID', verifyAuth, async (_req, res) => {
 
 apiRouter.get('/searchRecipe/:recipeName', verifyAuth, async (_req, res) => {
     const { recipeName } = _req.params;
-    console.log("recipeName", recipeName);
     const recipe = await DB.getRecipeByName(recipeName);
     if (recipe) {
       res.json(recipe);
@@ -110,7 +109,6 @@ apiRouter.get('/recipes/:userName', verifyAuth, async (_req, res) => {
 apiRouter.get('/otherRecipes/:userName', verifyAuth, async (_req, res) => {
     const { userName } = _req.params;
     const recipes = await DB.getOtherRecipes(userName);
-    console.log("recipes", recipes);
     res.send(recipes);
 });
 

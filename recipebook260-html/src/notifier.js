@@ -10,7 +10,7 @@ class Notifier {
     handlers = [];
 
     constructor() {
-        let port = 4000;
+        let port = window.location.hostname === "localhost" ? 4000 : window.location.port;
         const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
 
         this.socket = new WebSocket(`${protocol}://${window.location.hostname}:${port}/ws`);
