@@ -106,6 +106,14 @@ apiRouter.get('/recipes/:userName', verifyAuth, async (_req, res) => {
     res.send(recipes);
 });
 
+// GetAllOtherRecipe
+apiRouter.get('/otherRecipes/:userName', verifyAuth, async (_req, res) => {
+    const { userName } = _req.params;
+    const recipes = await DB.getOtherRecipes(userName);
+    console.log("recipes", recipes);
+    res.send(recipes);
+});
+
 // CreateRecipe
 apiRouter.post('/createRecipe', verifyAuth, async (req, res) => {
     //recipes = updateRecipe(req.body);

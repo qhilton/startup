@@ -10,6 +10,7 @@ const Home = () => {
     const userName = localStorage.getItem('userName');
     const [recipes, setRecipes] = useState([]);
     const [popularRecipe, setPopularRecipe] = useState("");
+    const [popularRecipes, setPopularRecipes] = useState("");
     const [pokemonName, setPokemonName] = useState("");
     const [pokemonStat, setPokemonStat] = useState("");
     const [recipeName, setRecipeName] = useState("");
@@ -17,14 +18,22 @@ const Home = () => {
     const [errorMessage, setErrorMessage] = useState("");
     const [newRecipeMessage, setNewRecipeMessage] = useState("");
 
-    const popularRecipes = [
-        "Chocolate Chip Cookies",
-        "Chicken Adobo",
-        "Dinner Rolls"
-    ];
+    // const popularRecipes = [
+    //     "Chocolate Chip Cookies",
+    //     "Chicken Adobo",
+    //     "Dinner Rolls"
+    // ];
 
     useEffect(() => {
-        let currentIndex = 0;
+        fetch(`/api/otherRecipes/${userName}`)
+          .then((response) => response.json())
+          .then((popularRecipes) => {
+            setPopularRecipes(popularRecipes);
+          });
+    }, []);
+
+    useEffect(() => {
+        let currentIndex = Math.floor(Math.random() * popularRecipes.length);
 
         const interval = setInterval(() => {
             setPopularRecipe(popularRecipes[currentIndex]);
@@ -32,7 +41,7 @@ const Home = () => {
         }, 10000);
 
         return () => clearInterval(interval);
-    }, []);
+    }, [popularRecipes]);
 
     useEffect(() => {
         fetch('https://pokeapi.co/api/v2/pokemon/charmander')
@@ -54,10 +63,8 @@ const Home = () => {
 
     useEffect(() => {
         notifier.addHandler((event) => {
-            console.log("event", event);
             if (event.value.message) {
                 setNewRecipeMessage(event.value.message);
-                console.log("message", newRecipeMessage);
             }
         });
         
@@ -70,11 +77,11 @@ const Home = () => {
         };
     }, []);
 
-    useEffect(() => {
-        if (newRecipeMessage) {
-            console.log("New message:", newRecipeMessage);
-        }
-    }, [newRecipeMessage]);
+    // useEffect(() => {
+    //     if (newRecipeMessage) {
+    //         console.log("New message:", newRecipeMessage);
+    //     }
+    // }, [newRecipeMessage]);
 
     const handleSearch = async () => {
         if (recipeName) {
@@ -106,12 +113,21 @@ const Home = () => {
 
     return (
         <div className="flex flex-1 flex-col">
+            {newRecipeMessage && (
+                <div className="new-recipe-message bg-secondary">
+                    <strong>{newRecipeMessage}</strong>
+                </div>
+            )}
             <main className="flex bg-secondary">
                 <div className="flex flex-col left-item">
                     <h1>
                         Popular Recipes
                     </h1>
-                    <div>{popularRecipe}</div>
+                    <div>
+                        <Link className="recipe-link" to={`/viewRecipe/${popularRecipe.id}`}>
+                            {popularRecipe.recipeName}
+                        </Link>
+                    </div>
 
                     <div>
                         {pokemonName} has a base attack stat of {pokemonStat}
@@ -154,11 +170,7 @@ const Home = () => {
                 </div>
             </main>
 
-            {newRecipeMessage && (
-                <div className="new-recipe-message">
-                    <strong>{newRecipeMessage}</strong>
-                </div>
-            )}
+            
 
             <MessageDialog
                 show={showError}

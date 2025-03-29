@@ -59,6 +59,15 @@ function getUserRecipes(userName) {
     return cursor.toArray();
 }
 
+function getOtherRecipes(userName) {
+    const query = { userName: { $ne: userName } };
+    const options = {
+        sort: { recipeName: 1 },
+    };
+    const cursor = recipeCollection.find(query, options);
+    return cursor.toArray();
+}
+
 module.exports = {
     getUser,
     getUserByToken,
@@ -68,4 +77,5 @@ module.exports = {
     getRecipeById,
     getRecipeByName,
     getUserRecipes,
+    getOtherRecipes,
   };

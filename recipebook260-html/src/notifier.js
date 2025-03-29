@@ -21,7 +21,6 @@ class Notifier {
             this.receiveEvent(new EventMessage('Recipebook', { msg: 'disconnected' }));
         };
         this.socket.onmessage = async (msg) => {
-            console.log("onmessage", msg);
             try {
                 const event = JSON.parse(await msg.data.text());
                 this.receiveEvent(event);
