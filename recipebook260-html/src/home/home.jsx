@@ -54,7 +54,7 @@ const Home = () => {
 
     useEffect(() => {
         notifier.addHandler((event) => {
-            //console.log("event", event);
+            console.log("event", event);
             if (event.value.message) {
                 setNewRecipeMessage(event.value.message);
                 console.log("message", newRecipeMessage);

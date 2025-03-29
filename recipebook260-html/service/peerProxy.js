@@ -2,15 +2,18 @@ const { WebSocketServer } = require('ws');
 
 function peerProxy(httpServer) {
   // Create a websocket object
+  console.log("hello there");
   const socketServer = new WebSocketServer({ server: httpServer });
 
   socketServer.on('connection', (socket) => {
     socket.isAlive = true;
+    console.log(socket.readyState);
 
     // Forward messages to everyone except the sender
     socket.on('message', function message(data) {
       socketServer.clients.forEach((client) => {
         if (client !== socket && client.readyState === WebSocket.OPEN) {
+          console.log("Broadcasting to client:", client);
           client.send(data);
         }
       });
