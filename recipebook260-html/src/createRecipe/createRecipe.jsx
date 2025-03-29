@@ -30,7 +30,6 @@ const CreateRecipe = () => {
     });
 
     if (response.ok) {
-      //console.log('Recipe saved successfully');
       const message = `${userName} added a new recipe for ${name}`;
       notifier.broadcastEvent('Recipebook', {
         message: message,
